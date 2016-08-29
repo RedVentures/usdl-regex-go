@@ -1,0 +1,3 @@
+package: github.com/usdl-regex-go
+import:
+  - package: github.com/stretchr/testify/assert
