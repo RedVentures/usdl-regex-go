@@ -26,7 +26,11 @@ func Validate(stateCode string, licenseNumber string) (match bool, err error) {
 		return
 	} 
 	
-	json.Unmarshal(stateRulesFile, &stateRules)
+	err = json.Unmarshal(stateRulesFile, &stateRules)
+	
+	if err != nil {
+		return
+	}
 	
 	regex, err := getRegex(stateCode)
 	
