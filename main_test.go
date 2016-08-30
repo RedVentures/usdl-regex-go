@@ -124,5 +124,5 @@ func TestValidateInvalidState(t *testing.T) {
 
 	assert.False(t, match)
 	assert.NotNil(t, err)
-	assert.Equal(t, "No rules exist for " + invalidState + "!", err.Error())
+	assert.Equal(t, ErrorNoRules.Error(), err.Error())
 }

@@ -8,6 +8,7 @@ import (
 )
 
 var stateRules StateRules
+var ErrorNoRules = errors.New("no rules found")
 
 /**
  * Validate a drivers license
@@ -59,7 +60,6 @@ func getRegex(stateCode string) (string, error) {
 		}
 	}
 	
-	err = errors.New("No rules exist for " + stateCode + "!")
-	
-	return "", err
+	// No rules found
+	return "", ErrorNoRules
 }
