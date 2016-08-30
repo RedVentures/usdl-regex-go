@@ -1,10 +1,10 @@
 package usdl
 
 type StateRules struct {
-	Rules			Rules		`json:"rules"`
+	Rules Rules `json:"rules"`
 }
 
 type Rules []struct {
-	State 			string 		`json:"state"`
-    Regex 			string 		`json:"regex"`	
+	State string `json:"state"`
+	Regex string `json:"regex"`
 }

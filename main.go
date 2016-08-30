@@ -21,25 +21,25 @@ var ErrorNoRules = errors.New("no rules found")
  */
 func Validate(stateCode string, licenseNumber string) (match bool, err error) {
 	stateRulesFile, err := ioutil.ReadFile("stateRegex.json")
-	
+
 	if err != nil {
 		return
-	} 
-	
+	}
+
 	err = json.Unmarshal(stateRulesFile, &stateRules)
-	
+
 	if err != nil {
 		return
 	}
-	
+
 	regex, err := getRegex(stateCode)
-	
+
 	if err != nil {
 		return
 	}
-	
+
 	match, err = regexp.MatchString(regex, licenseNumber)
-	
+
 	return
 }
 
@@ -53,13 +53,13 @@ func Validate(stateCode string, licenseNumber string) (match bool, err error) {
  */
 func getRegex(stateCode string) (string, error) {
 	var err error
-	
+
 	for _, rule := range stateRules.Rules {
 		if stateCode == rule.State {
 			return rule.Regex, err
 		}
 	}
-	
+
 	// No rules found
 	return "", ErrorNoRules
 }
