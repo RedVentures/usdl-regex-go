@@ -1,7 +1,6 @@
 package usdl
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -78,7 +77,15 @@ func TestValidateInvalidState(t *testing.T) {
 	var invalidState string = "ZZ"
 	match, err := Validate(invalidState, "1234")
 
-	assert.False(t, match)
-	assert.NotNil(t, err)
-	assert.Equal(t, ErrorNoRules, err)
+	if match {
+		t.Error("Should be false")
+	}
+
+	if err == nil {
+		t.Error("Expected value not to be nil")
+	}
+
+	if ErrorNoRules != err {
+		t.Error("Expected no rules to be found")
+	}
 }
