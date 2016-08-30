@@ -32,13 +32,13 @@ func Validate(stateCode string, licenseNumber string) (match bool, err error) {
 		return
 	}
 
-	regex, err := getRegex(stateCode)
+	pattern, err := getRegex(stateCode)
 
 	if err != nil {
 		return
 	}
 
-	match, err = regexp.MatchString(regex, licenseNumber)
+	match, err = regexp.MatchString(pattern, licenseNumber)
 
 	return
 }
