@@ -1,7 +1,5 @@
 # USDL-REGEX-GO
 
-## Abstract
-
 USDL-REGEX-GO is a driver's license regex validation library.  It is a golang port from the USDLRegex [github.com/adambullmer/USDLRegex](https://github.com/adambullmer/USDLRegex) PHP project.  Like USDLRegex, it is sourced from https://ntsi.com/drivers-license-format/
 
 ## Use cases
