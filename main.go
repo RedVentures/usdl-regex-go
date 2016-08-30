@@ -1,13 +1,10 @@
 package usdl
 
 import (
-	"encoding/json"
 	"errors"
-	"io/ioutil"
 	"regexp"
 )
 
-var stateRules StateRules
 var ErrorNoRules = errors.New("no rules found")
 
 /**
@@ -20,46 +17,12 @@ var ErrorNoRules = errors.New("no rules found")
  *
  */
 func Validate(stateCode string, licenseNumber string) (match bool, err error) {
-	stateRulesFile, err := ioutil.ReadFile("stateRegex.json")
+	var r *regexp.Regexp
+	var ok bool
 
-	if err != nil {
-		return
+	if r, ok = rules[stateCode]; !ok {
+		return false, ErrorNoRules
 	}
 
-	err = json.Unmarshal(stateRulesFile, &stateRules)
-
-	if err != nil {
-		return
-	}
-
-	pattern, err := getRegex(stateCode)
-
-	if err != nil {
-		return
-	}
-
-	match, err = regexp.MatchString(pattern, licenseNumber)
-
-	return
-}
-
-/**
- * Helper method used to get the regex based on state code
- *
- * @param stateCode string The state code for the drivers license
- *
- * @return A regex string for a state or any potential error found
- *
- */
-func getRegex(stateCode string) (string, error) {
-	var err error
-
-	for _, rule := range stateRules.Rules {
-		if stateCode == rule.State {
-			return rule.Regex, err
-		}
-	}
-
-	// No rules found
-	return "", ErrorNoRules
+	return r.MatchString(licenseNumber), nil
 }
