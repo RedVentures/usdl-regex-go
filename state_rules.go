@@ -1,4 +1,4 @@
-package model
+package usdlregex
 
 type StateRules struct {
 	Rules			Rules		`json:"rules"`

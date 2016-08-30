@@ -5,10 +5,9 @@ import (
 	"errors"
 	"io/ioutil"
 	"regexp"
-	"github.com/usdl-regex-go/model"
 )
 
-var stateRules model.StateRules
+var stateRules StateRules
 
 /**
  * Validate a drivers license
