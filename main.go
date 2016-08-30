@@ -19,7 +19,7 @@ var stateRules model.StateRules
  * @return A boolean indicating if the drivers license is valid or any potential error found
  *
  */
-func ValidateDriversLicense(stateCode string, licenseNumber string) (match bool, err error) {
+func Validate(stateCode string, licenseNumber string) (match bool, err error) {
 	stateRulesFile, err := ioutil.ReadFile("stateRegex.json")
 	
 	if err != nil {

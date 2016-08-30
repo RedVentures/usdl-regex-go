@@ -8,8 +8,8 @@ import (
 /**
  * Test AL with valid value
  */
-func TestValidateDriversLicenseValidAL(t *testing.T) {
-    match, err := ValidateDriversLicense("AL", "1234567")
+func TestValidateValidAL(t *testing.T) {
+    match, err := Validate("AL", "1234567")
 
 	assert.True(t, match)
 	assert.Nil(t, err)
@@ -18,8 +18,8 @@ func TestValidateDriversLicenseValidAL(t *testing.T) {
 /**
  * Test AL with invalid value (8 numbers and max is 7)
  */
-func TestValidateDriversLicenseInvalidAL(t *testing.T) {
-    match, err := ValidateDriversLicense("AL", "12345678")
+func TestValidateInvalidAL(t *testing.T) {
+    match, err := Validate("AL", "12345678")
 
 	assert.False(t, match)
 	assert.Nil(t, err)
@@ -28,8 +28,8 @@ func TestValidateDriversLicenseInvalidAL(t *testing.T) {
 /**
  * Test AZ with valid value
  */
-func TestValidateDriversLicenseValidAZ(t *testing.T) {
-    match, err := ValidateDriversLicense("AZ", "A12345678")
+func TestValidateValidAZ(t *testing.T) {
+    match, err := Validate("AZ", "A12345678")
 
 	assert.True(t, match)
 	assert.Nil(t, err)
@@ -38,8 +38,8 @@ func TestValidateDriversLicenseValidAZ(t *testing.T) {
 /**
  * Test AZ with invalid value (One letter and no numbers)
  */
-func TestValidateDriversLicenseInvalidAZNoNumbers(t *testing.T) {
-    match, err := ValidateDriversLicense("AZ", "A")
+func TestValidateInvalidAZNoNumbers(t *testing.T) {
+    match, err := Validate("AZ", "A")
 
 	assert.False(t, match)
 	assert.Nil(t, err)
@@ -48,8 +48,8 @@ func TestValidateDriversLicenseInvalidAZNoNumbers(t *testing.T) {
 /**
  * Test AZ with invalid value (One letter and nine numbers)
  */
-func TestValidateDriversLicenseInvalidAZNineNumbers(t *testing.T) {
-    match, err := ValidateDriversLicense("AZ", "A123456789")
+func TestValidateInvalidAZNineNumbers(t *testing.T) {
+    match, err := Validate("AZ", "A123456789")
 
 	assert.False(t, match)
 	assert.Nil(t, err)
@@ -58,8 +58,8 @@ func TestValidateDriversLicenseInvalidAZNineNumbers(t *testing.T) {
 /**
  * Test AZ with valid value (Two letters and three numbers)
  */
-func TestValidateDriversLicenseValidAZTwoLettersThreeNumbers(t *testing.T) {
-    match, err := ValidateDriversLicense("AZ", "AB123")
+func TestValidateValidAZTwoLettersThreeNumbers(t *testing.T) {
+    match, err := Validate("AZ", "AB123")
 
 	assert.True(t, match)
 	assert.Nil(t, err)
@@ -68,8 +68,8 @@ func TestValidateDriversLicenseValidAZTwoLettersThreeNumbers(t *testing.T) {
 /**
  * Test AZ with valid value (No letters and nine numbers)
  */
-func TestValidateDriversLicenseValidAZNoLettersNineNumbers(t *testing.T) {
-    match, err := ValidateDriversLicense("AZ", "123456789")
+func TestValidateValidAZNoLettersNineNumbers(t *testing.T) {
+    match, err := Validate("AZ", "123456789")
 
 	assert.True(t, match)
 	assert.Nil(t, err)
@@ -78,8 +78,8 @@ func TestValidateDriversLicenseValidAZNoLettersNineNumbers(t *testing.T) {
 /**
  * Test CT with valid value (Nine numbers)
  */
-func TestValidateDriversLicenseValidCTNineNumbers(t *testing.T) {
-    match, err := ValidateDriversLicense("CT", "123456789")
+func TestValidateValidCTNineNumbers(t *testing.T) {
+    match, err := Validate("CT", "123456789")
 
 	assert.True(t, match)
 	assert.Nil(t, err)
@@ -88,8 +88,8 @@ func TestValidateDriversLicenseValidCTNineNumbers(t *testing.T) {
 /**
  * Test CT with valid value (Nine numbers)
  */
-func TestValidateDriversLicenseInvalidCTOneLetterEightNumbers(t *testing.T) {
-    match, err := ValidateDriversLicense("CT", "A12345678")
+func TestValidateInvalidCTOneLetterEightNumbers(t *testing.T) {
+    match, err := Validate("CT", "A12345678")
 
 	assert.False(t, match)
 	assert.Nil(t, err)
@@ -98,8 +98,8 @@ func TestValidateDriversLicenseInvalidCTOneLetterEightNumbers(t *testing.T) {
 /**
  * Test KS with valid value (1 Letter + 1 Number + 1 Letter + 1 Number + 1 Letter)
  */
-func TestValidateDriversLicenseValidKSToggleLetterNumber(t *testing.T) {
-    match, err := ValidateDriversLicense("KS", "A1B1A")
+func TestValidateValidKSToggleLetterNumber(t *testing.T) {
+    match, err := Validate("KS", "A1B1A")
 
 	assert.True(t, match)
 	assert.Nil(t, err)
@@ -108,8 +108,8 @@ func TestValidateDriversLicenseValidKSToggleLetterNumber(t *testing.T) {
 /**
  * Test KS with invalid value (1 Letter + 1 Number + 1 Letter)
  */
-func TestValidateDriversLicenseInvalidKSToggleLetterNumber(t *testing.T) {
-    match, err := ValidateDriversLicense("KS", "A1B")
+func TestValidateInvalidKSToggleLetterNumber(t *testing.T) {
+    match, err := Validate("KS", "A1B")
 
 	assert.False(t, match)
 	assert.Nil(t, err)
@@ -118,9 +118,9 @@ func TestValidateDriversLicenseInvalidKSToggleLetterNumber(t *testing.T) {
 /**
  * Test invalid state
  */
-func TestValidateDriversLicenseInvalidState(t *testing.T) {
+func TestValidateInvalidState(t *testing.T) {
 	var invalidState string = "ZZ"
-    match, err := ValidateDriversLicense(invalidState, "1234")
+    match, err := Validate(invalidState, "1234")
 
 	assert.False(t, match)
 	assert.NotNil(t, err)
