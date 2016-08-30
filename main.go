@@ -1,4 +1,4 @@
-package usdlregex
+package usdl
 
 import (
 	"encoding/json"
