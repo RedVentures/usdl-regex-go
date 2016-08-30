@@ -6,6 +6,5 @@ type StateRules struct {
 
 type Rules []struct {
 	State 			string 		`json:"state"`
-    Regex 			string 		`json:"regex"`
-    Description 	[]string 	`json:"description"`		
+    Regex 			string 		`json:"regex"`	
 }
