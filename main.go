@@ -52,7 +52,7 @@ func Validate(stateCode string, licenseNumber string) (match bool, err error) {
  *
  */
 func getRegex(stateCode string) (string, error) {
-	var err error = nil
+	var err error
 	
 	for _, rule := range stateRules.Rules {
 		if stateCode == rule.State {
