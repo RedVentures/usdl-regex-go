@@ -2,6 +2,7 @@ package usdl
 
 import (
 	"errors"
+	"regexp"
 )
 
 var ErrorNoRules = errors.New("no rules found")
@@ -16,31 +17,23 @@ var ErrorNoRules = errors.New("no rules found")
  *
  */
 func Validate(stateCode string, licenseNumber string) (match bool, err error) {
-	// Assume no rule will be found
-	var isRuleFound = false
+	var sr []*regexp.Regexp
+	var ok bool
 
-	// Grab the array of rules based on the state code
-	// and iterate over them
-	for _, rule := range rules[stateCode] {
-		isRuleFound = true
+	// Check if any rules found
+	if sr, ok = rules[stateCode]; !ok {
+		// No rules found, send error indicating this
+		return false, ErrorNoRules
+	}
 
-		// See if a match exists for this rule
-		match, err = rule.MatchString(licenseNumber), nil
-
-		// Return if an error or match is found
-		// Otherwise try the next rule
-		if err != nil || match {
-			return
+	// Iterate over rules to see if the license number
+	// does not match the regex
+	for _, r := range sr {
+		if !r.MatchString(licenseNumber) {
+			return false, nil
 		}
 	}
 
-	// Check to see if no rule was found
-	if !isRuleFound {
-		// If no match is found for any rules return
-		// an error indicating this
-		return isRuleFound, ErrorNoRules
-	}
-
-	// No match was found
-	return false, nil
+	// license number matched the regex for the state
+	return true, nil
 }
