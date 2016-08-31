@@ -4,154 +4,157 @@ import (
 	"regexp"
 )
 
-var rules = map[string]*regexp.Regexp{
+var rules = map[string][]*regexp.Regexp{
 	// 1-7 Numeric
-	"AL": regexp.MustCompile("^[0-9]{1,7}$"),
+	"AL": []*regexp.Regexp{regexp.MustCompile("^[0-9]{1,7}$")},
 	// 1-7 Numeric
-	"AK": regexp.MustCompile("^[0-9]{1,7}$"),
+	"AK": []*regexp.Regexp{regexp.MustCompile("^[0-9]{1,7}$")},
 	// 1 Alpha + 1-8 Numeric
 	// 2 Alpha + 2-5 Numeric
 	// 9 Numeric
-	"AZ": regexp.MustCompile("(^[A-Z]{1}[0-9]{1,8}$)|(^[A-Z]{2}[0-9]{2,5}$)|(^[0-9]{9}$)"),
+	"AZ": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{1,8}$)|(^[A-Z]{2}[0-9]{2,5}$)|(^[0-9]{9}$)")},
 	// 4-9 Numeric
-	"AR": regexp.MustCompile("^[0-9]{4,9}$"),
+	"AR": []*regexp.Regexp{regexp.MustCompile("^[0-9]{4,9}$")},
 	// 1 Alpha + 7 Numeric
-	"CA": regexp.MustCompile("^[A-Z]{1}[0-9]{7}$"),
+	"CA": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{7}$")},
 	// 9 Numeric
 	// 1 Alpha + 3-6 Numeric
 	// 2 Alpha + 2-5 Numeric
-	"CO": regexp.MustCompile("(^[0-9]{9}$)|(^[A-Z]{1}[0-9]{3,6}$)|(^[A-Z]{2}[0-9]{2,5}$)"),
+	"CO": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{9}$)|(^[A-Z]{1}[0-9]{3,6}$)|(^[A-Z]{2}[0-9]{2,5}$)")},
 	// 9 Numeric
-	"CT": regexp.MustCompile("^[0-9]{9}$"),
+	"CT": []*regexp.Regexp{regexp.MustCompile("^[0-9]{9}$")},
 	// 1-7 Numeric
-	"DE": regexp.MustCompile("^[0-9]{1,7}$"),
+	"DE": []*regexp.Regexp{regexp.MustCompile("^[0-9]{1,7}$")},
 	// 9 Numeric
-	"DC": regexp.MustCompile("(^[0-9]{7}$)|(^[0-9]{9}$)"),
+	"DC": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{7}$)|(^[0-9]{9}$)")},
 	// 1 Alpha + 12 Numeric
-	"FL": regexp.MustCompile("^[A-Z]{1}[0-9]{12}$"),
+	"FL": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{12}$")},
 	// 7-9 Numeric
-	"GA": regexp.MustCompile("^[0-9]{7,9}$"),
+	"GA": []*regexp.Regexp{regexp.MustCompile("^[0-9]{7,9}$")},
 	// 1 Alpha + 14 Numeric
-	"GU": regexp.MustCompile("^[A-Z]{1}[0-9]{14}$"),
+	"GU": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{14}$")},
 	// 1 Alpha + 8 Numeric
 	// 9 Numeric
-	"HI": regexp.MustCompile("(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)"),
+	"HI": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)")},
 	// 2 Alpha + 6 Numeric + 1 Alpha
 	// 9 Numeric
-	"ID": regexp.MustCompile("(^[A-Z]{2}[0-9]{6}[A-Z]{1}$)|(^[0-9]{9}$)"),
+	"ID": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{2}[0-9]{6}[A-Z]{1}$)|(^[0-9]{9}$)")},
 	// 1 Alpha + 11-12 Numeric
-	"IL": regexp.MustCompile("^[A-Z]{1}[0-9]{11,12}$"),
+	"IL": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{11,12}$")},
 	// 1 Alpha + 9 Numeric
 	// 9-10 Numeric
-	"IN": regexp.MustCompile("(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9,10}$)"),
+	"IN": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9,10}$)")},
 	// 9 Numeric
 	// 3 Numeric + 2 Alpha + 4 Numeric
-	"IA": regexp.MustCompile("^([0-9]{9}|([0-9]{3}[A-Z]{2}[0-9]{4}))$"),
+	"IA": []*regexp.Regexp{regexp.MustCompile("^([0-9]{9}|([0-9]{3}[A-Z]{2}[0-9]{4}))$")},
 	// 1 Alpha + 1 Numeric + 1 Alpha + 1 Numeric + 1 Alpha
 	// 1 Alpha + 8 Numeric
 	// 9 Numeric
-	"KS": regexp.MustCompile("(^([A-Z]{1}[0-9]{1}){2}[A-Z]{1}$)|(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)"),
+	"KS": []*regexp.Regexp{regexp.MustCompile("(^([A-Z]{1}[0-9]{1}){2}[A-Z]{1}$)|(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)")},
 	// 1 Alpha + 8-9 Numeric
 	// 9 Numeric
-	"KY": regexp.MustCompile("(^[A_Z]{1}[0-9]{8,9}$)|(^[0-9]{9}$)"),
+	"KY": []*regexp.Regexp{regexp.MustCompile("(^[A_Z]{1}[0-9]{8,9}$)|(^[0-9]{9}$)")},
 	// 1-9 Numeric
-	"LA": regexp.MustCompile("^[0-9]{1,9}$"),
+	"LA": []*regexp.Regexp{regexp.MustCompile("^[0-9]{1,9}$")},
 	// 7-8 Numeric
 	// 7 Numeric + 1 Alpha
-	"ME": regexp.MustCompile("(^[0-9]{7,8}$)|(^[0-9]{7}[A-Z]{1}$)"),
+	"ME": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{7,8}$)|(^[0-9]{7}[A-Z]{1}$)")},
 	// 1Alpha+12Numeric
-	"MD": regexp.MustCompile("^[A-Z]{1}[0-9]{12}$"),
+	"MD": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{12}$")},
 	// 1 Alpha + 8 Numeric
 	// 9 Numeric
-	"MA": regexp.MustCompile("(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)"),
+	"MA": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)")},
 	// 1 Alpha + 10 Numeric
 	// 1 Alpha + 12 Numeric
-	"MI": regexp.MustCompile("(^[A-Z]{1}[0-9]{10}$)|(^[A-Z]{1}[0-9]{12}$)"),
+	"MI": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{10}$)|(^[A-Z]{1}[0-9]{12}$)")},
 	// 1 Alpha + 12 Numeric
-	"MN": regexp.MustCompile("^[A-Z]{1}[0-9]{12}$"),
+	"MN": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{12}$")},
 	// 9 Numeric
-	"MS": regexp.MustCompile("^[0-9]{9}$"),
+	"MS": []*regexp.Regexp{regexp.MustCompile("^[0-9]{9}$")},
 	// 1 Alpha + 5-9 Numeric
 	// 1 Alpha + 6 Numeric + 'R'
 	// 8 Numeric + 2 Alpha
 	// 9 Numeric + 1 Alpha
 	// 9 Numeric
-	"MO": regexp.MustCompile("(^[A-Z]{1}[0-9]{5,9}$)|(^[A-Z]{1}[0-9]{6}[R]{1}$)|(^[0-9]{8}[A-Z]{2}$)|(^[0-9]{9}[A-Z]{1}$)|(^[0-9]{9}$)"),
+	"MO": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{5,9}$)|(^[A-Z]{1}[0-9]{6}[R]{1}$)|(^[0-9]{8}[A-Z]{2}$)|(^[0-9]{9}[A-Z]{1}$)|(^[0-9]{9}$)")},
 	// 1 Alpha + 8 Numeric
 	// 13 Numeric
 	// 9 Numeric
 	// 14 Numeric
-	"MT": regexp.MustCompile("(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{13}$)|(^[0-9]{9}$)|(^[0-9]{14}$)"),
+	"MT": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{13}$)|(^[0-9]{9}$)|(^[0-9]{14}$)")},
 	// 1-7 Numeric
-	"NE": regexp.MustCompile("^[0-9]{1,7}$"),
+	"NE": []*regexp.Regexp{regexp.MustCompile("^[0-9]{1,7}$")},
 	// 9 Numeric
 	// 10 Numeric
 	// 12 Numeric
 	// 'X' + 8 Numeric
-	"NV": regexp.MustCompile("(^[0-9]{9,10}$)|(^[0-9]{12}$)|(^[X]{1}[0-9]{8}$)"),
+	"NV": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{9,10}$)|(^[0-9]{12}$)|(^[X]{1}[0-9]{8}$)")},
 	// 2 Numeric + 3 Alpha + 5 Numeric
-	"NH": regexp.MustCompile("^[0-9]{2}[A-Z]{3}[0-9]{5}$"),
+	"NH": []*regexp.Regexp{regexp.MustCompile("^[0-9]{2}[A-Z]{3}[0-9]{5}$")},
 	// 1 Alpha + 14 Numeric
-	"NJ": regexp.MustCompile("^[A-Z]{1}[0-9]{14}$"),
+	"NJ": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{14}$")},
 	// 8 Numeric
 	// 9 Numeric
-	"NM": regexp.MustCompile("^[0-9]{8,9}$"),
+	"NM": []*regexp.Regexp{regexp.MustCompile("^[0-9]{8,9}$")},
 	// 1 Alpha + 7 Numeric
 	// 1 Alpha + 18 Numeric
 	// 8 Numeric
 	// 9 Numeric
 	// 16 Numeric
 	// 8 Alpha
-	"NY": regexp.MustCompile("(^[A-Z]{1}[0-9]{7}$)|(^[A-Z]{1}[0-9]{18}$)|(^[0-9]{8}$)|(^[0-9]{9}$)|(^[0-9]{16}$)|(^[A-Z]{8}$)"),
+	"NY": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{7}$)|(^[A-Z]{1}[0-9]{18}$)|(^[0-9]{8}$)|(^[0-9]{9}$)|(^[0-9]{16}$)|(^[A-Z]{8}$)")},
 	// 1-12 Numeric
-	"NC": regexp.MustCompile("^[0-9]{1,12}$"),
+	"NC": []*regexp.Regexp{regexp.MustCompile("^[0-9]{1,12}$")},
 	// 3 Alpha + 6 Numeric
 	// 9 Numeric
-	"ND": regexp.MustCompile("(^[A-Z]{3}[0-9]{6}$)|(^[0-9]{9}$)"),
+	"ND": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{3}[0-9]{6}$)|(^[0-9]{9}$)")},
 	// 1 Alpha + 4-8 Numeric
 	// 2 Alpha + 3-7 Numeric
 	// 8 Numeric
-	"OH": regexp.MustCompile("(^[A-Z]{1}[0-9]{4,8}$)|(^[A-Z]{2}[0-9]{3,7}$)|(^[0-9]{8}$)"),
+	"OH": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{4,8}$)|(^[A-Z]{2}[0-9]{3,7}$)|(^[0-9]{8}$)")},
 	// 1 Alpha + 9 Numeric
 	// 9 Numeric
-	"OK": regexp.MustCompile("(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9}$)"),
+	"OK": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9}$)")},
 	// 1-9 Numeric
-	"OR": regexp.MustCompile("^[0-9]{1,9}$"),
+	"OR": []*regexp.Regexp{regexp.MustCompile("^[0-9]{1,9}$")},
 	// 8 Numeric
-	"PA": regexp.MustCompile("^[0-9]{8}$"),
+	"PA": []*regexp.Regexp{regexp.MustCompile("^[0-9]{8}$")},
 	// 5-7 Numeric
 	// 9 Numeric
-	"PR": regexp.MustCompile("(^[0-9]{9}$)|(^[0-9]{5,7}$)"),
+	"PR": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{9}$)|(^[0-9]{5,7}$)")},
 	// 7 Numeric
 	// 1 Alpha + 6 Numeric
-	"RI": regexp.MustCompile("^([0-9]{7}$)|(^[A-Z]{1}[0-9]{6}$)"),
+	"RI": []*regexp.Regexp{regexp.MustCompile("^([0-9]{7}$)|(^[A-Z]{1}[0-9]{6}$)")},
 	// 5-11 Numeric
-	"SC": regexp.MustCompile("^[0-9]{5,11}$"),
+	"SC": []*regexp.Regexp{regexp.MustCompile("^[0-9]{5,11}$")},
 	// 6-10 Numeric
 	// 12 Numeric
-	"SD": regexp.MustCompile("(^[0-9]{6,10}$)|(^[0-9]{12}$)"),
+	"SD": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{6,10}$)|(^[0-9]{12}$)")},
 	// 7-9 Numeric
-	"TN": regexp.MustCompile("^[0-9]{7,9}$"),
+	"TN": []*regexp.Regexp{regexp.MustCompile("^[0-9]{7,9}$")},
 	// 7-8 Numeric
-	"TX": regexp.MustCompile("^[0-9]{7,8}$"),
+	"TX": []*regexp.Regexp{regexp.MustCompile("^[0-9]{7,8}$")},
 	// 4-10 Numeric
-	"UT": regexp.MustCompile("^[0-9]{4,10}$"),
+	"UT": []*regexp.Regexp{regexp.MustCompile("^[0-9]{4,10}$")},
 	// 8 Numeric
 	// 7 Numeric + 'A'
-	"VT": regexp.MustCompile("(^[0-9]{8}$)|(^[0-9]{7}[A]$)"),
+	"VT": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{8}$)|(^[0-9]{7}[A]$)")},
 	// 1 Alpha + 8 Numeric
 	// 1 Alpha + 9 Numeric
 	// 1 Alpha + 10 Numeric
 	// 1 Alpha + 11 Numeric
 	// 9 Numeric
-	"VA": regexp.MustCompile("(^[A-Z]{1}[0-9]{8,11}$)|(^[0-9]{9}$)"),
+	"VA": []*regexp.Regexp{regexp.MustCompile("(^[A-Z]{1}[0-9]{8,11}$)|(^[0-9]{9}$)")},
 	// 1-7 Alpha + any combination of Alpha, Numeric, and * for a total of 12 characters
-	// "WA": regexp.MustCompile("^(?=.{12}$)[A-Z]{1,7}[A-Z0-9\\*]{4,11}$"),
+	"WA": []*regexp.Regexp{
+		regexp.MustCompile("^[A-Z]{1,7}[A-Z0-9\\*]{4,11}$"),
+		regexp.MustCompile("^.{12}$"),
+	},
 	// 7 Numeric
 	// 1-2 Alpha + 5-6 Numeric
-	"WV": regexp.MustCompile("(^[0-9]{7}$)|(^[A-Z]{1,2}[0-9]{5,6}$)"),
+	"WV": []*regexp.Regexp{regexp.MustCompile("(^[0-9]{7}$)|(^[A-Z]{1,2}[0-9]{5,6}$)")},
 	// 1 Alpha + 13 Numeric
-	"WI": regexp.MustCompile("^[A-Z]{1}[0-9]{13}$"),
+	"WI": []*regexp.Regexp{regexp.MustCompile("^[A-Z]{1}[0-9]{13}$")},
 	// 9-10 Numeric
-	"WY": regexp.MustCompile("^[0-9]{9,10}$"),
+	"WY": []*regexp.Regexp{regexp.MustCompile("^[0-9]{9,10}$")},
 }
