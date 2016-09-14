@@ -16,7 +16,7 @@ Import:
 
 ```
 import (
-	"github.com/usdl-regex-go"
+	"github.com/redventures/usdl-regex-go"
 )
 ```
 
