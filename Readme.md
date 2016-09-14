@@ -23,5 +23,5 @@ import (
 In Use:
 
 ```
-match, err = usdlregex.ValidateDriversLicense("AL", "123456789")
+match, err = usdl.Validate(stateCode, licenseNumber)
 ```
