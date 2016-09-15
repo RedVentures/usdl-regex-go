@@ -8,7 +8,7 @@ Anytime you need to validate a driver's license!
 
 ## Usage
 
-The stateRegex.json included in the library contains all of the regex rules for each state.  All you need to do is import this library and provide a state number along with a drivers license number
+The state_rules.json included in the library contains all of the regex rules for each state.  All you need to do is import this library and provide a state number along with a drivers license number
 
 Example:
 
